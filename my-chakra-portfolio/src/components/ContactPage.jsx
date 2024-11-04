@@ -21,16 +21,63 @@ const ContactPage = () => {
     setFormData({ ...formData, [name]: value });
   };
 
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+
+  //   // Simulate sending the email
+  //   console.log("Sending email to:", "elijah.ward014@gmail.com");
+  //   console.log("Form Data:", formData);
+
+  //   setIsSubmitted(true);
+  //   setFormData({ name: "", email: "", message: "" });
+  // };
+
+
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  
+  //   try {
+  //     const response = await fetch('http://localhost:5001/send-email', {
+  //       method: 'POST',
+  //       headers: {
+  //         'Content-Type': 'application/json',
+  //       },
+  //       body: JSON.stringify(formData),
+  //     });
+  
+  //     if (response.ok) {
+  //       setIsSubmitted(true);
+  //       setFormData({ name: "", email: "", message: "" });
+  //     } else {
+  //       throw new Error('Email sending failed');
+  //     }
+  //   } catch (error) {
+  //     console.error('Error sending email:', error);
+  //   }
+  // };
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    // Simulate sending the email
-    console.log("Sending email to:", "elijah.ward014@gmail.com");
-    console.log("Form Data:", formData);
-
-    setIsSubmitted(true);
-    setFormData({ name: "", email: "", message: "" });
+    try {
+      const response = await fetch('http://localhost:5001/send-email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+  
+      const data = await response.json();
+      if (response.ok) {
+        console.log('Email sent successfully:', data);
+      } else {
+        console.error('Error sending email:', data);
+      }
+    } catch (error) {
+      console.error('Network error:', error);
+    }
   };
+  
 
   return (
     <Box
