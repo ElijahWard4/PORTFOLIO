@@ -1,21 +1,3 @@
-// import { defineConfig } from 'vite'
-// import react from '@vitejs/plugin-react'
-
-// // https://vitejs.dev/config/
-// export default defineConfig({
-//   plugins: [react()],
-// })
-
-
-// import { defineConfig } from 'vite';
-// import react from '@vitejs/plugin-react';
-
-// export default defineConfig({
-//   plugins: [react()],
-//   optimizeDeps: {
-//     exclude: ['react-particle-backgrounds', '@chakra-ui/react'], // Add any dependencies that cause the issue here
-//   },
-// });
 
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
@@ -28,6 +10,24 @@ export default defineConfig({
   ],
   optimizeDeps: {
     include: ['hoist-non-react-statics'] // Ensure Vite handles it correctly
-  }
+  },
+  server: {
+    proxy: {
+      '/send-email': 'http://localhost:5001', // Proxy requests to your backend
+    },
+  },
 });
+
+
+// import { defineConfig } from 'vite';
+// import react from '@vitejs/plugin-react';
+
+// export default defineConfig({
+//   plugins: [react()],
+  // server: {
+  //   proxy: {
+  //     '/send-email': 'http://localhost:5001', // Proxy requests to your backend
+//     },
+//   },
+// });
 
