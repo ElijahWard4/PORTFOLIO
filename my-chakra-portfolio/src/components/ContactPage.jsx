@@ -24,7 +24,7 @@ const ContactPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('http://localhost:5001/send-email', {
+      const response = await fetch('https://Elijah-Ward-Portfolio.onrender.com/send-email', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
