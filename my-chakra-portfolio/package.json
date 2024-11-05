@@ -4,10 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "start": "concurrently \"npm run start-backend\" \"npm run serve-frontend\"",
-    "start-backend": "node server/index.js",
-    "build-frontend": "vite build",
-    "serve-frontend": "serve -s dist",  
+    "start": "node server/index.js",  
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
