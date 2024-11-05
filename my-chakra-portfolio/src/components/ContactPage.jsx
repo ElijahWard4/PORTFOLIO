@@ -35,6 +35,8 @@ const ContactPage = () => {
       const data = await response.json();
       if (response.ok) {
         console.log('Email sent successfully:', data);
+        setIsSubmitted(true);
+        setFormData({ name: "", email: "", message: "" }); // Clear form fields
       } else {
         console.error('Error sending email:', data);
       }
